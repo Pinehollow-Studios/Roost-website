@@ -14,15 +14,12 @@ export default function Navbar() {
   }, []);
 
   return (
-    <motion.nav
-      className="fixed top-0 left-0 right-0 z-50"
-      animate={{
-        backdropFilter: scrolled ? "blur(12px)" : "blur(0px)",
-        backgroundColor: scrolled ? "rgba(235,227,213,0.85)" : "rgba(235,227,213,0)",
-        borderBottomWidth: scrolled ? 1 : 0,
-        borderBottomColor: "rgba(61,50,41,0.12)",
-      }}
-      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "backdrop-blur-md bg-background/85 border-b border-border"
+          : "bg-transparent"
+      }`}
       aria-label="Main navigation"
     >
       <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
@@ -50,6 +47,6 @@ export default function Navbar() {
           Download
         </motion.a>
       </div>
-    </motion.nav>
+    </nav>
   );
 }

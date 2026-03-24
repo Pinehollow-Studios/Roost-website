@@ -39,17 +39,12 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0 flex items-center justify-center"
         aria-hidden="true"
       >
-        <motion.div
-          className="w-[900px] h-[700px] rounded-full bg-primary/[0.07] blur-[160px]"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 2, ease: "easeOut" }}
-        />
+        <div className="w-[700px] h-[500px] rounded-full bg-primary/[0.07] blur-[100px]" />
       </div>
 
       <motion.div
         className="relative max-w-3xl mx-auto text-center"
-        style={{ y, opacity }}
+        style={{ y, opacity, willChange: "transform, opacity" }}
         variants={container}
         initial="hidden"
         animate="show"
