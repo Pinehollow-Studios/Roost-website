@@ -4,7 +4,7 @@ import html from "remark-html";
 const GITHUB_API_BASE = "https://api.github.com/repos/tomslater1/Roost/releases";
 const RELEASE_REVALIDATE_SECONDS = 3600;
 const FALLBACK_DMG_URL =
-  "https://github.com/tomslater1/Roost/releases/latest/download/Roost.dmg";
+  "/download";
 
 type GitHubAsset = {
   name: string;
@@ -15,7 +15,7 @@ type GitHubAsset = {
 type GitHubReleaseApi = {
   tag_name: string;
   name: string;
-  body: string;
+  body: string | null | undefined;
   published_at: string;
   html_url: string;
   draft: boolean;
@@ -28,6 +28,7 @@ export type ReleaseEntry = {
   name: string;
   body: string;
   bodyHtml: string;
+  bodyRenderMode: "html" | "pre" | "empty";
   publishedAt: string;
   publishedLabel: string;
   htmlUrl: string;
@@ -52,8 +53,12 @@ function getGitHubHeaders() {
 }
 
 async function markdownToHtml(markdown: string) {
-  const processed = await remark().use(html).process(markdown || "");
+  const processed = await remark().use(html).process(markdown);
   return processed.toString();
+}
+
+function normaliseBody(body: string | null | undefined) {
+  return typeof body === "string" ? body : "";
 }
 
 function formatPublishedDate(dateString: string) {
@@ -84,10 +89,12 @@ async function fetchGitHubJson<T>(url: string) {
 }
 
 function mapReleaseBase(release: GitHubReleaseApi) {
+  const body = normaliseBody(release.body);
+
   return {
     tagName: release.tag_name,
     name: release.name,
-    body: release.body ?? "",
+    body,
     publishedAt: release.published_at,
     publishedLabel: formatPublishedDate(release.published_at),
     htmlUrl: release.html_url,
@@ -103,10 +110,51 @@ export async function getPublicReleases(): Promise<ReleaseEntry[]> {
   );
 
   return Promise.all(
-    published.map(async (release) => ({
-      ...mapReleaseBase(release),
-      bodyHtml: await markdownToHtml(release.body ?? ""),
-    })),
+    published.map(async (release) => {
+      const base = mapReleaseBase(release);
+
+      if (process.env.NODE_ENV === "development") {
+        console.log(
+          `[changelog] ${release.tag_name} body type=${typeof release.body} preview=${JSON.stringify(
+            base.body.slice(0, 100),
+          )}`,
+        );
+      }
+
+      if (base.body.trim() === "") {
+        return {
+          ...base,
+          bodyHtml: "",
+          bodyRenderMode: "empty" as const,
+        };
+      }
+
+      try {
+        const bodyHtml = await markdownToHtml(base.body);
+
+        return {
+          ...base,
+          bodyHtml,
+          bodyRenderMode: bodyHtml.trim() ? ("html" as const) : ("empty" as const),
+        };
+      } catch (error) {
+        if (process.env.NODE_ENV === "development") {
+          console.log(
+            `[changelog] ${release.tag_name} markdown render failed, falling back to plain text`,
+            error,
+          );
+        }
+
+        return {
+          ...base,
+          bodyHtml: `<pre>${base.body
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")}</pre>`,
+          bodyRenderMode: "pre" as const,
+        };
+      }
+    }),
   );
 }
 

@@ -2,8 +2,6 @@
 
 import { motion } from "framer-motion";
 
-const ease = [0.16, 1, 0.3, 1] as const;
-
 const features = [
   {
     name: "Shopping list",
@@ -78,39 +76,35 @@ const features = [
   },
 ];
 
-const cardContainer = {
+const ease = [0.16, 1, 0.3, 1] as const;
+
+const stagger = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.12, delayChildren: 0.08 } },
 };
 
-const cardItem = {
+const rise = {
   hidden: { opacity: 0, y: 48 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.9, ease } },
 };
 
 export default function Features() {
   return (
-    <section id="features" className="py-28 px-6" aria-labelledby="features-heading">
+    <section
+      id="features"
+      className="bg-muted/40 py-32 px-6 sm:py-36"
+      aria-labelledby="features-heading"
+    >
       <div className="max-w-6xl mx-auto">
-
-        {/* Section heading */}
         <motion.div
           className="mb-16"
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.8, ease }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.9, ease }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <motion.div
-              className="w-1.5 h-7 bg-primary rounded-full"
-              aria-hidden="true"
-              initial={{ scaleY: 0 }}
-              whileInView={{ scaleY: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, ease, delay: 0.2 }}
-              style={{ transformOrigin: "top" }}
-            />
+            <div className="h-7 w-1.5 rounded-full bg-primary" aria-hidden="true" />
             <h2
               id="features-heading"
               className="text-3xl sm:text-4xl font-medium text-foreground tracking-tight"
@@ -123,44 +117,34 @@ export default function Features() {
           </p>
         </motion.div>
 
-        {/* Cards */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
-          variants={cardContainer}
+          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+          variants={stagger}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.12 }}
         >
           {features.map((feature) => (
             <motion.article
               key={feature.name}
-              variants={cardItem}
-              whileHover={{
-                y: -12,
-                boxShadow: "0 20px 60px rgba(212, 121, 94, 0.16)",
-                borderTopColor: "var(--primary)",
-                transition: { type: "spring", stiffness: 300, damping: 20 },
-              }}
-              className="group relative flex flex-col gap-4 p-6 rounded-xl
-                         border border-border
-                         shadow-[0_2px_8px_rgba(61,50,41,0.06)]"
+              variants={rise}
+              whileHover={{ y: -10, scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 220, damping: 20 }}
+              className="relative flex h-full flex-col gap-5 rounded-xl border border-border bg-card p-6 shadow-[0_2px_8px_rgba(61,50,41,0.06)] sm:p-7"
               style={{ borderTop: "2px solid rgba(212,121,94,0.35)" }}
             >
-              {/* Icon */}
-              <motion.div
-                className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary"
-                whileHover={{ backgroundColor: "rgba(212,121,94,0.18)" }}
-                transition={{ duration: 0.2 }}
-              >
-                {feature.icon}
-              </motion.div>
+              <div className="flex items-center gap-3">
+                <div className="h-2.5 w-2.5 rounded-full bg-primary" aria-hidden="true" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  {feature.icon}
+                </div>
+              </div>
 
-              {/* Text */}
               <div>
-                <h3 className="font-medium text-foreground text-base leading-snug">
+                <h3 className="text-lg font-medium leading-snug text-foreground">
                   {feature.name}
                 </h3>
-                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
+                <p className="mt-2 text-base leading-relaxed text-muted-foreground">
                   {feature.description}
                 </p>
               </div>

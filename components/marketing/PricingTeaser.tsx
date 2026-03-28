@@ -7,48 +7,42 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function PricingTeaser() {
   return (
-    <section className="py-28 px-6" aria-labelledby="pricing-teaser-heading">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-24 px-6 sm:py-28" aria-labelledby="pricing-teaser-heading">
+      <div className="max-w-4xl mx-auto">
         <motion.div
-          className="rounded-xl border border-border bg-card px-6 py-10 sm:px-8 sm:py-12 shadow-[0_2px_8px_rgba(61,50,41,0.06)]"
+          className="rounded-2xl border border-border bg-card px-6 py-12 text-center shadow-[0_2px_8px_rgba(61,50,41,0.06)] sm:px-10"
           style={{ borderTop: "2px solid rgba(212,121,94,0.35)" }}
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.8, ease }}
+          transition={{ duration: 0.95, ease }}
         >
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-4">
-              <motion.div
-                className="w-1.5 h-7 bg-primary rounded-full"
-                aria-hidden="true"
-                initial={{ scaleY: 0 }}
-                whileInView={{ scaleY: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, ease, delay: 0.2 }}
-                style={{ transformOrigin: "top" }}
-              />
-              <h2
-                id="pricing-teaser-heading"
-                className="text-3xl sm:text-4xl font-medium text-foreground tracking-tight"
-              >
-                Free to start. Nest when you&apos;re ready.
-              </h2>
-            </div>
+          <div className="mx-auto max-w-2xl">
+            <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-primary">
+              Pricing
+            </p>
+            <h2
+              id="pricing-teaser-heading"
+              className="text-3xl sm:text-4xl font-medium text-foreground tracking-tight"
+            >
+              Free to start. Nest when you&apos;re ready.
+            </h2>
 
-            <p className="pl-[calc(0.375rem+0.75rem)] text-lg text-muted-foreground leading-relaxed max-w-xl text-balance">
+            <p className="mt-5 text-lg text-muted-foreground leading-relaxed text-balance">
               Roost is free. Roost Nest unlocks the full experience — expense
               history, budget insights, Hazel, and more.
             </p>
 
-            <div className="mt-6 pl-[calc(0.375rem+0.75rem)]">
-              <Link
+            <div className="mt-7">
+              <motion.div whileHover={{ x: 6 }} transition={{ duration: 0.35, ease }}>
+                <Link
                 href="/pricing"
-                className="inline-flex items-center gap-1.5 text-base font-medium text-foreground transition-colors hover:text-primary"
-              >
-                See what&apos;s included
-                <span aria-hidden="true">→</span>
-              </Link>
+                className="inline-flex items-center gap-1.5 text-base font-medium text-foreground underline decoration-border underline-offset-4 hover:text-primary"
+                >
+                  See what&apos;s included
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </motion.div>
             </div>
           </div>
         </motion.div>

@@ -74,10 +74,12 @@ export default async function ChangelogPage() {
                             {release.name}
                           </h2>
 
-                          <div
-                            className="prose mt-6 max-w-none"
-                            dangerouslySetInnerHTML={{ __html: release.bodyHtml }}
-                          />
+                          {release.bodyHtml.trim() ? (
+                            <div
+                              className="prose mt-6 max-w-none"
+                              dangerouslySetInnerHTML={{ __html: release.bodyHtml }}
+                            />
+                          ) : null}
 
                           <a
                             href={release.htmlUrl}

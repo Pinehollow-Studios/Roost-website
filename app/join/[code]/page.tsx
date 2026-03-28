@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: "You've been invited to Roost",
     description:
-      "Your partner has invited you to join their Roost household — shared shopping, expenses, chores, and calendar, syncing in real time across both your Macs.",
+      "Your partner has invited you to join their Roost household — shared shopping, expenses, chores, and calendar, syncing in real time across both your devices.",
     openGraph: {
       title: "You've been invited to Roost",
       description:

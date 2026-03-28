@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { DOWNLOAD_URL } from "@/lib/constants";
+import { APPLE_LOGO_PATH, DOWNLOAD_URL } from "@/lib/constants";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 const spring = { type: "spring" as const, stiffness: 400, damping: 17 };
@@ -18,7 +18,7 @@ const item = {
 };
 
 const steps = [
-  { number: "01", text: "Download and open Roost on your Mac" },
+  { number: "01", text: "Download and open Roost on your device" },
   { number: "02", text: "Choose \"Join existing home\" when prompted" },
   { number: "03", text: "Enter your invite code — you're in" },
 ];
@@ -164,10 +164,10 @@ export default function InvitePage({ code }: { code: string }) {
                        border border-border bg-card text-sm font-medium text-foreground
                        hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            <svg width="14" height="14" viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true">
-              <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105-42.3-150.3-109.2C79 740 40 610 40 480c0-178.1 116.2-272.6 230.4-272.6 61.2 0 112.3 40.8 149.8 40.8 35.8 0 92.1-43.1 160.3-43.1 24.4 0 108.2 2.6 168.6 81.3zm-87.4-227.9c28.3-35.2 48.5-84.1 48.5-133 0-6.4-.6-12.9-1.9-18.1-46.2 1.9-101.8 31.5-135.3 71.3-27 31.5-50.2 80.4-50.2 130 0 7.1 1.3 14.2 1.9 16.5 2.6.3 6.4.6 10.3.6 41.5 0 93.2-28.3 126.7-67.3z" />
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d={APPLE_LOGO_PATH} />
             </svg>
-            Download for Mac
+            Download Roost
           </motion.a>
         </motion.div>
 
@@ -193,7 +193,7 @@ export default function InvitePage({ code }: { code: string }) {
           variants={item}
           className="text-center text-xs text-muted-foreground mt-10"
         >
-          macOS 13 and above · Free during early access
+          Free during early access · more devices coming soon
         </motion.p>
       </motion.div>
     </div>

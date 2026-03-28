@@ -13,11 +13,11 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Roost — Your home, in sync.",
   description:
-    "Roost is the shared life dashboard for couples. One place to manage shopping, expenses, chores, and your calendar — syncing in real time across both your Macs.",
+    "Roost is the shared life dashboard for couples. One place to manage shopping, expenses, chores, and your calendar — syncing in real time across both your devices.",
   openGraph: {
     title: "Roost — Your home, in sync.",
     description:
-      "Roost is the shared life dashboard for couples. One place to manage shopping, expenses, chores, and your calendar — syncing in real time across both your Macs.",
+      "Roost is the shared life dashboard for couples. One place to manage shopping, expenses, chores, and your calendar — syncing in real time across both your devices.",
     type: "website",
     siteName: "Roost",
   },
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Roost — Your home, in sync.",
     description:
-      "Roost is the shared life dashboard for couples. One place to manage shopping, expenses, chores, and your calendar — syncing in real time across both your Macs.",
+      "Roost is the shared life dashboard for couples. One place to manage shopping, expenses, chores, and your calendar — syncing in real time across both your devices.",
   },
 };
 
