@@ -1,0 +1,17 @@
+{
+  "name": "Roost",
+  "short_name": "Roost",
+  "description": "Roost is the shared life dashboard for couples. One place to manage shopping, expenses, chores, and your calendar — syncing in real time across both your devices.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

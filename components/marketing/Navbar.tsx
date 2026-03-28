@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { APP_NAME, DOWNLOAD_URL } from "@/lib/constants";
@@ -27,9 +28,18 @@ export default function Navbar() {
         <div className="flex items-center gap-6 sm:gap-8">
           <Link
             href="/"
-            className="text-lg font-medium text-foreground tracking-tight select-none"
+            className="flex items-center gap-2 select-none"
           >
-            {APP_NAME}
+            <Image
+              src="/logo.png"
+              alt="Roost logo"
+              width={28}
+              height={28}
+              className="rounded-md"
+            />
+            <span className="text-lg font-medium text-foreground tracking-tight">
+              {APP_NAME}
+            </span>
           </Link>
 
           <Link
