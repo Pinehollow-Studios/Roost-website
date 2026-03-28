@@ -64,6 +64,64 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.prose {
+  color: var(--muted-foreground);
+}
+
+.prose p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--muted-foreground);
+}
+
+.prose ul,
+.prose ol {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--muted-foreground);
+}
+
+.prose li {
+  margin-bottom: 0.25rem;
+}
+
+.prose strong {
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+.prose h2,
+.prose h3 {
+  margin: 1.75rem 0 0.75rem;
+  color: var(--foreground);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.prose h2 {
+  font-size: 1.5rem;
+}
+
+.prose h3 {
+  font-size: 1.25rem;
+}
+
+.prose a {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 0.2em;
+  transition: color 180ms ease;
+}
+
+.prose a:hover {
+  color: var(--primary);
+}
+
 /* ─── Utilities ──────────────────────────────────────────────────────────── */
 @layer utilities {
   .text-balance {

@@ -38,6 +38,13 @@ export default function Navbar() {
           >
             Pricing
           </Link>
+
+          <Link
+            href="/changelog"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md"
+          >
+            Changelog
+          </Link>
         </div>
 
         <motion.a
