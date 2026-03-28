@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { APP_NAME, DOWNLOAD_URL } from "@/lib/constants";
@@ -23,9 +24,21 @@ export default function Navbar() {
       aria-label="Main navigation"
     >
       <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-        <span className="text-lg font-medium text-foreground tracking-tight select-none">
-          {APP_NAME}
-        </span>
+        <div className="flex items-center gap-6 sm:gap-8">
+          <Link
+            href="/"
+            className="text-lg font-medium text-foreground tracking-tight select-none"
+          >
+            {APP_NAME}
+          </Link>
+
+          <Link
+            href="/pricing"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md"
+          >
+            Pricing
+          </Link>
+        </div>
 
         <motion.a
           href={DOWNLOAD_URL}
