@@ -103,7 +103,7 @@ export default function Hero() {
           </motion.button>
 
           <p className="text-sm text-muted-foreground/70">
-            Available now during early access · iPhone version coming soon
+            Mac available now · iOS beta for Roost households
           </p>
         </motion.div>
 

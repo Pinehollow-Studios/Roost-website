@@ -12,10 +12,7 @@ export default function Footer() {
         </p>
         <div className="flex flex-col items-center gap-2 text-center sm:items-end sm:text-right">
           <p className="text-sm text-muted-foreground">
-            Your data lives in your own private database.{" "}
-            <span className="text-muted-foreground/60">
-              No tracking, no ads, no third parties.
-            </span>
+            Household data, billing, and AI assistance are handled by Roost’s trusted service providers.
           </p>
           <Link
             href="/privacy"

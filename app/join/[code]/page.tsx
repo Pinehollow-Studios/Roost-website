@@ -10,11 +10,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: "You've been invited to Roost",
     description:
-      "Your partner has invited you to join their Roost household — shared shopping, expenses, chores, and calendar, syncing in real time across both your devices.",
+      "Your partner has invited you to join their Roost household — shared money, shopping, chores, calendar, and pinboard.",
     openGraph: {
       title: "You've been invited to Roost",
       description:
-        "Your partner has invited you to join their Roost household — shared shopping, expenses, chores, and calendar, syncing in real time.",
+        "Your partner has invited you to join their Roost household — shared money, shopping, chores, calendar, and pinboard.",
       type: "website",
       siteName: "Roost",
     },
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: "You've been invited to Roost",
       description:
-        "Your partner has invited you to join their Roost household — shared shopping, expenses, chores, and calendar.",
+        "Your partner has invited you to join their Roost household — shared money, shopping, chores, calendar, and pinboard.",
     },
     robots: { index: false },
   };

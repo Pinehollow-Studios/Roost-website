@@ -25,11 +25,11 @@ export default function PricingTeaser() {
               id="pricing-teaser-heading"
               className="text-3xl sm:text-4xl font-medium text-foreground tracking-tight"
             >
-              Free to start. Nest when you&apos;re ready.
+              Free to start. Pro when you&apos;re ready.
             </h2>
 
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed text-balance">
-              Roost is free. Roost Nest unlocks the full experience — expense
+              Roost is free. Roost Pro unlocks the full experience — expense
               history, budget insights, Hazel, and more.
             </p>
 

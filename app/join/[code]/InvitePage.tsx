@@ -18,7 +18,7 @@ const item = {
 };
 
 const steps = [
-  { number: "01", text: "Download and open Roost on your device" },
+  { number: "01", text: "Download and open Roost on Mac or iOS beta" },
   { number: "02", text: "Choose \"Join existing home\" when prompted" },
   { number: "03", text: "Enter your invite code — you're in" },
 ];
@@ -71,7 +71,7 @@ export default function InvitePage({ code }: { code: string }) {
             <span className="text-primary">Roost.</span>
           </h1>
           <p className="mt-4 text-base text-muted-foreground leading-relaxed text-balance">
-            Your shared home dashboard is ready — shopping, expenses, chores, and your calendar, all in one place.
+            Your shared Roost home is ready — money, shopping, chores, calendar, and pinboard in one place.
           </p>
         </motion.div>
 
@@ -193,7 +193,7 @@ export default function InvitePage({ code }: { code: string }) {
           variants={item}
           className="text-center text-xs text-muted-foreground mt-10"
         >
-          Free during early access · more devices coming soon
+          Mac available now · iOS beta for Roost households
         </motion.p>
       </motion.div>
     </div>

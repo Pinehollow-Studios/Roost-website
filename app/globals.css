@@ -4,22 +4,22 @@
 
 /* ─── Light mode tokens ─────────────────────────────────────────────────── */
 :root {
-  --background: #ebe3d5;
-  --foreground: #3d3229;
-  --card: #f2ebe0;
+  --background: #f6f8f4;
+  --foreground: #20241f;
+  --card: #ffffff;
   --primary: #d4795e;
-  --primary-foreground: #f2ebe0;
+  --primary-foreground: #ffffff;
   --secondary: #9db19f;
-  --secondary-foreground: #3d3229;
-  --muted: #ddd4c6;
-  --muted-foreground: #6b6157;
-  --accent: #e8d5bc;
-  --accent-foreground: #3d3229;
+  --secondary-foreground: #20241f;
+  --muted: #e8ede5;
+  --muted-foreground: #626b5d;
+  --accent: #f1f4ee;
+  --accent-foreground: #20241f;
   --destructive: #c75146;
-  --border: rgba(61, 50, 41, 0.15);
-  --input: #e3d9ca;
+  --border: rgba(32, 36, 31, 0.13);
+  --input: #e3e9df;
   --ring: rgba(212, 121, 94, 0.3);
-  --radius: 0.875rem;
+  --radius: 0.5rem;
 }
 
 /* ─── Dark mode tokens ───────────────────────────────────────────────────── */

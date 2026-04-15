@@ -11,9 +11,10 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Roost — Your home, in sync.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  title: "Roost — Budget and run your home together.",
   description:
-    "Roost is the shared life dashboard for couples. One place to manage shopping, expenses, chores, and your calendar — syncing in real time across both your devices.",
+    "Roost helps couples manage household money, shopping, chores, calendars, notes, and shared decisions across Mac and iOS beta.",
   icons: {
     icon: [
       { url: "/logo.png", type: "image/png", sizes: "512x512" },
@@ -25,9 +26,9 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   openGraph: {
-    title: "Roost — Your home, in sync.",
+    title: "Roost — Budget and run your home together.",
     description:
-      "Roost is the shared life dashboard for couples. One place to manage shopping, expenses, chores, and your calendar — syncing in real time across both your devices.",
+      "Roost helps couples manage household money, shopping, chores, calendars, notes, and shared decisions across Mac and iOS beta.",
     type: "website",
     siteName: "Roost",
     images: [
@@ -35,15 +36,15 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Roost — Your home, in sync.",
+        alt: "Roost — Budget and run your home together.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Roost — Your home, in sync.",
+    title: "Roost — Budget and run your home together.",
     description:
-      "Roost is the shared life dashboard for couples. One place to manage shopping, expenses, chores, and your calendar — syncing in real time across both your devices.",
+      "Roost helps couples manage household money, shopping, chores, calendars, notes, and shared decisions across Mac and iOS beta.",
     images: ["/og-image.png"],
   },
 };

@@ -4,7 +4,7 @@ import DownloadPageContent from "@/components/marketing/DownloadPageContent";
 export const metadata: Metadata = {
   title: "Download — Roost",
   description:
-    "Download Roost for Mac. Free, always up to date, and ready in minutes.",
+    "Download Roost for Mac and learn about the iOS beta for shared household budgeting and home management.",
 };
 
 interface GitHubAsset {
