@@ -31,6 +31,7 @@ export default function BillingPanel({ data, reload }: { data: AccountData; relo
 
   const home = data.home;
   const active = isProHome(home);
+  const isMobileSubscriber = active && !home.stripe_customer_id;
   const nextBilling = formatDate(home.current_period_ends_at);
   const notice = searchParams.get("checkout") || searchParams.get("portal");
 
@@ -125,31 +126,40 @@ export default function BillingPanel({ data, reload }: { data: AccountData; relo
 
       <section className="rounded-lg border border-border bg-card p-6">
         <h3 className="text-xl font-medium text-foreground">Billing actions</h3>
-        <p className="mt-2 text-muted-foreground">
-          {active || home.stripe_customer_id
-            ? "Open Stripe to update payment details, switch plan, view invoices, or cancel."
-            : <>Start <ProInline className="font-medium" /> checkout for this household.</>}
-        </p>
-        {error ? <p className="mt-4 rounded-lg bg-destructive/10 px-4 py-3 text-sm text-destructive">{error}</p> : null}
-        <button
-          type="button"
-          onClick={openBilling}
-          disabled={loading}
-          className="pro-shimmer relative mt-6 overflow-hidden rounded-lg px-5 py-3 font-bold text-[#8B3A1E] disabled:opacity-60"
-          style={{ backgroundImage: proGradient }}
-        >
-          <span className="relative z-10">
-            {loading ? (
-              "Opening Stripe..."
-            ) : active || home.stripe_customer_id ? (
-              "Manage subscription"
-            ) : (
-              <>
-                Start Roost Pro
-              </>
-            )}
-          </span>
-        </button>
+        {isMobileSubscriber ? (
+          <p className="mt-2 text-muted-foreground">
+            Your subscription is managed in the Roost app — open{" "}
+            <strong className="text-foreground">Settings → Billing</strong> to make changes.
+          </p>
+        ) : (
+          <>
+            <p className="mt-2 text-muted-foreground">
+              {active || home.stripe_customer_id
+                ? "Open Stripe to update payment details, switch plan, view invoices, or cancel."
+                : <>Start <ProInline className="font-medium" /> checkout for this household.</>}
+            </p>
+            {error ? <p className="mt-4 rounded-lg bg-destructive/10 px-4 py-3 text-sm text-destructive">{error}</p> : null}
+            <button
+              type="button"
+              onClick={openBilling}
+              disabled={loading}
+              className="pro-shimmer relative mt-6 overflow-hidden rounded-lg px-5 py-3 font-bold text-[#8B3A1E] disabled:opacity-60"
+              style={{ backgroundImage: proGradient }}
+            >
+              <span className="relative z-10">
+                {loading ? (
+                  "Opening Stripe..."
+                ) : active || home.stripe_customer_id ? (
+                  "Manage subscription"
+                ) : (
+                  <>
+                    Start Roost Pro
+                  </>
+                )}
+              </span>
+            </button>
+          </>
+        )}
       </section>
     </div>
   );

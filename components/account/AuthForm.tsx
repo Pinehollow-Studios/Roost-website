@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useMemo, useState } from "react";
 import MarketingShell from "@/components/marketing/MarketingShell";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser";
+import { APPLE_LOGO_PATH } from "@/lib/constants";
 
 export default function AuthForm({ mode }: { mode: "login" | "signup" }) {
   const router = useRouter();
@@ -46,6 +47,21 @@ export default function AuthForm({ mode }: { mode: "login" | "signup" }) {
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");
     } finally {
+      setLoading(false);
+    }
+  }
+
+  async function continueWithApple() {
+    setLoading(true);
+    setError(null);
+    const { error: appleError } = await supabase.auth.signInWithOAuth({
+      provider: "apple",
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`,
+      },
+    });
+    if (appleError) {
+      setError(appleError.message);
       setLoading(false);
     }
   }
@@ -125,14 +141,27 @@ export default function AuthForm({ mode }: { mode: "login" | "signup" }) {
 
             <div className="my-6 h-px bg-border" />
 
-            <button
-              type="button"
-              onClick={continueWithGoogle}
-              disabled={loading}
-              className="w-full rounded-lg border border-border bg-background px-5 py-3 font-medium text-foreground disabled:opacity-60"
-            >
-              Continue with Google
-            </button>
+            <div className="space-y-3">
+              <button
+                type="button"
+                onClick={continueWithApple}
+                disabled={loading}
+                className="flex w-full items-center justify-center gap-3 rounded-lg bg-[#000] px-5 py-3 font-medium text-white disabled:opacity-60 dark:bg-white dark:text-black"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d={APPLE_LOGO_PATH} />
+                </svg>
+                Sign in with Apple
+              </button>
+              <button
+                type="button"
+                onClick={continueWithGoogle}
+                disabled={loading}
+                className="w-full rounded-lg border border-border bg-background px-5 py-3 font-medium text-foreground disabled:opacity-60"
+              >
+                Continue with Google
+              </button>
+            </div>
 
             <p className="mt-6 text-sm text-muted-foreground">
               {isSignup ? "Already have an account?" : "New to Roost?"}{" "}
