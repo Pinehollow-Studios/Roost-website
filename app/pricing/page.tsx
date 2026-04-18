@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import PricingPageContent from "@/components/marketing/PricingPageContent";
+import dynamic from "next/dynamic";
+
+const PricingPageContent = dynamic(
+  () => import("@/components/marketing/PricingPageContent"),
+  { ssr: false }
+);
 
 export const metadata: Metadata = {
   title: "Roost Pro — Pricing",
