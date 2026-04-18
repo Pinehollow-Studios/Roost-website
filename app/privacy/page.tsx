@@ -4,11 +4,11 @@ import Link from "next/link";
 export const metadata: Metadata = {
     title: "Privacy Policy — Roost",
     description:
-        "Privacy policy for the Roost website, macOS app, and mobile app.",
+        "Privacy policy for the Roost website, macOS app, and iOS app.",
     openGraph: {
         title: "Privacy Policy — Roost",
         description:
-            "Privacy policy for the Roost website, macOS app, and mobile app.",
+            "Privacy policy for the Roost website, macOS app, and iOS app.",
         type: "website",
         siteName: "Roost",
     },
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Privacy Policy — Roost",
         description:
-            "Privacy policy for the Roost website, macOS app, and mobile app.",
+            "Privacy policy for the Roost website, macOS app, and iOS app.",
     },
 };
 
@@ -27,6 +27,13 @@ const thirdParties = [
         location: "US (EU/UK data stored under SCCs)",
         href: "https://supabase.com/privacy",
         label: "supabase.com/privacy",
+    },
+    {
+        party: "Stripe",
+        purpose: "Payment processing (Roost Pro subscriptions)",
+        location: "US (EU/UK data stored under SCCs)",
+        href: "https://stripe.com/gb/privacy",
+        label: "stripe.com/gb/privacy",
     },
     {
         party: "Anthropic",
@@ -48,6 +55,7 @@ const retentionRows = [
     ["Account and household data", "For as long as your account is active"],
     ["Activity feed entries", "Rolling 90 days"],
     ["Preferences and settings", "For as long as your account is active"],
+    ["Billing records (Stripe)", "7 years, as required by UK financial regulations"],
     [
         "Data sent to Anthropic (Hazel)",
         "Not retained by Anthropic beyond the API request",
@@ -128,11 +136,11 @@ export default function PrivacyPage() {
                         </p>
                         <p>
                             This policy applies to the <strong className="text-foreground">Roost website</strong>,
-                            the <strong className="text-foreground">Roost macOS app</strong>, and the
-                            <strong className="text-foreground"> Roost mobile app</strong>.
+                            the <strong className="text-foreground">Roost macOS app</strong>, and the{" "}
+                            <strong className="text-foreground">Roost iOS app</strong>.
                         </p>
                         <p>
-                            <strong className="text-foreground">Last updated:</strong> 26 March 2026
+                            <strong className="text-foreground">Last updated:</strong> 18 April 2026
                         </p>
                         <p>
                             <strong className="text-foreground">Contact:</strong>{" "}
@@ -183,9 +191,15 @@ export default function PrivacyPage() {
                             />
                             <DataBlock
                                 heading="Household content"
-                                what="Everything you and your partner create inside the app — shopping list items, expense records and amounts, chore names and descriptions, budget limits, calendar events, activity feed entries, and notes."
+                                what="Everything you and your partner create inside the app — shopping list items, expense records and amounts, chore names and descriptions, budget limits, calendar events, activity feed entries, pinboard notes, and shared decisions."
                                 why="To provide the core features of Roost: a shared, real-time view of your household."
                                 basis="Performance of contract."
+                            />
+                            <DataBlock
+                                heading="Billing and payment data"
+                                what="Your subscription status and billing plan. Payment details (card number, billing address) are handled directly by Stripe and are never stored by Roost."
+                                why="To manage your Roost Pro subscription, process payments, and apply the correct features to your household."
+                                basis="Performance of contract — required to provide the paid tier of the service."
                             />
                             <DataBlock
                                 heading="Preferences and settings"
@@ -212,12 +226,12 @@ export default function PrivacyPage() {
                         <ul className="list-disc space-y-2 pl-5">
                             <li>
                                 <strong className="text-foreground">What is sent:</strong> Only the text of the
-                                specific item being processed, for example “2x oat milk” or “Uber to airport”.
+                                specific item being processed, for example "2x oat milk" or "Uber to airport".
                                 No account information, names, or other personal details are attached.
                             </li>
                             <li>
                                 <strong className="text-foreground">Who receives it:</strong> Anthropic, PBC — a US
-                                company. See “International transfers” below.
+                                company. See "International transfers" below.
                             </li>
                             <li>
                                 <strong className="text-foreground">Anthropic&apos;s data use:</strong> Anthropic does not
@@ -284,10 +298,10 @@ export default function PrivacyPage() {
 
                     <Section title="International transfers">
                         <p>
-                            Supabase and Anthropic are based in the United States. Transferring
+                            Supabase, Stripe, and Anthropic are based in the United States. Transferring
                             personal data from the UK or EU to the US requires appropriate safeguards
-                            under UK GDPR and EU GDPR. Both Supabase and Anthropic operate under
-                            <strong className="text-foreground"> Standard Contractual Clauses (SCCs)</strong>,
+                            under UK GDPR and EU GDPR. All three operate under{" "}
+                            <strong className="text-foreground">Standard Contractual Clauses (SCCs)</strong>,
                             which are the approved legal mechanism for these transfers.
                         </p>
                     </Section>
@@ -314,7 +328,7 @@ export default function PrivacyPage() {
                         <p>
                             If you delete your account, all of your personal data is permanently
                             deleted from our database within 30 days, except where we are required
-                            by law to retain it.
+                            by law to retain it (for example, billing records).
                         </p>
                     </Section>
 
@@ -331,7 +345,7 @@ export default function PrivacyPage() {
                             </li>
                             <li>
                                 <strong className="text-foreground">Erasure</strong> — ask us to delete your data
-                                (“right to be forgotten”)
+                                ("right to be forgotten")
                             </li>
                             <li>
                                 <strong className="text-foreground">Portability</strong> — receive your data in a
@@ -387,25 +401,10 @@ export default function PrivacyPage() {
 
                     <Section title="Changes to this policy">
                         <p>
-                            If we make material changes to this policy, we will update the “Last
-                            updated” date above and notify users via the app or website where
+                            If we make material changes to this policy, we will update the "Last
+                            updated" date above and notify users via the app or website where
                             appropriate. Continued use of Roost after a change constitutes acceptance
                             of the updated policy.
-                        </p>
-                    </Section>
-
-                    <Section title="Website-specific notes">
-                        <p>
-                            The Roost website is mainly a marketing site and invite-link landing
-                            experience. Based on the current codebase, it does not include analytics,
-                            advertising trackers, cookies for profiling, or embedded third-party ad
-                            tools.
-                        </p>
-                        <p>
-                            The website can process limited technical data necessary to serve pages,
-                            handle downloads, and open invite links into the app. If you add cookies,
-                            analytics, contact forms, newsletters, or additional third-party embeds in
-                            future, this policy should be updated to reflect that.
                         </p>
                     </Section>
 
