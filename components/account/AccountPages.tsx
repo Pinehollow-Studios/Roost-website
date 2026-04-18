@@ -5,6 +5,7 @@ import AccountShell from "@/components/account/AccountShell";
 import BillingPanel from "@/components/account/BillingPanel";
 import SetupRequired from "@/components/account/SetupRequired";
 import { isProHome, subscriptionLabel } from "@/lib/account";
+import { ProInline } from "@/components/marketing/ProBrand";
 
 function InfoRow({ label, value }: { label: string; value: string }) {
   return (
@@ -12,6 +13,16 @@ function InfoRow({ label, value }: { label: string; value: string }) {
       <p className="text-sm text-muted-foreground">{label}</p>
       <p className="mt-1 text-lg font-medium text-foreground">{value}</p>
     </div>
+  );
+}
+
+function PlanValue({ value }: { value: string }) {
+  if (!value.startsWith("Roost Pro")) return <>{value}</>;
+  return (
+    <>
+      <ProInline />
+      {value.replace("Roost Pro", "")}
+    </>
   );
 }
 
@@ -35,7 +46,9 @@ export function AccountOverviewPage() {
             </div>
             <div className="rounded-lg bg-card p-5">
               <p className="text-sm text-muted-foreground">Plan</p>
-              <p className="mt-2 text-xl font-medium text-foreground">{subscriptionLabel(data.home)}</p>
+              <p className="mt-2 text-xl font-medium text-foreground">
+                <PlanValue value={subscriptionLabel(data.home)} />
+              </p>
             </div>
           </div>
 
@@ -60,7 +73,12 @@ export function AccountBillingPage() {
   return (
     <AccountShell
       title="Billing"
-      intro="View your Roost Pro status and open Stripe for checkout, invoices, payment details, plan changes, or cancellation."
+      intro={
+        <>
+          View your <ProInline /> status and open Stripe for checkout, invoices, payment details,
+          plan changes, or cancellation.
+        </>
+      }
     >
       {(data, reload) => <BillingPanel data={data} reload={reload} />}
     </AccountShell>
@@ -103,7 +121,13 @@ export function AccountHouseholdPage() {
             <div className="rounded-lg border border-border bg-card p-6">
               <h2 className="text-2xl font-medium text-foreground">{data.home.name ?? "Roost household"}</h2>
               <p className="mt-2 text-muted-foreground">
-                {isProHome(data.home) ? "Roost Pro is active for this household." : "This household is on Roost Free."}
+                {isProHome(data.home) ? (
+                  <>
+                    <ProInline /> is active for this household.
+                  </>
+                ) : (
+                  "This household is on Roost Free."
+                )}
               </p>
             </div>
             <div className="rounded-lg border border-border bg-card p-6">

@@ -6,8 +6,8 @@ import MarketingShell from "@/components/marketing/MarketingShell";
 const installSteps = [
   ["01", "Download the Mac app", "Open the latest Roost.dmg from your Downloads folder."],
   ["02", "Move Roost to Applications", "Drag Roost into Applications so it is installed like the rest of your Mac apps."],
-  ["03", "Open Roost", "If macOS asks, right-click Roost and choose Open the first time."],
-  ["04", "Create or join your home", "Set up your household or join with an invite code. Your data syncs with iOS beta."],
+  ["03", "Open Roost", "Double-click Roost to launch it. macOS will verify the app automatically — no extra steps needed."],
+  ["04", "Create or join your home", "Set up your household or join with an invite code. Your data syncs across Mac and iOS."],
 ] as const;
 
 export default function DownloadPageContent({
@@ -27,7 +27,7 @@ export default function DownloadPageContent({
               Start Roost on your Mac.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              The Mac app is available now. iOS is in beta for Roost households using the same shared home and budget.
+              The Mac app is available now. iOS is officially in beta and launching on the App Store in May.
             </p>
             {versionLine ? <p className="mt-4 text-sm text-muted-foreground">{versionLine}</p> : null}
             <a
@@ -49,18 +49,18 @@ export default function DownloadPageContent({
         </div>
       </section>
 
-      <section id="ios-beta" className="bg-muted px-6 py-24">
+      <section id="ios" className="bg-muted px-6 py-24">
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <p className="text-sm font-medium uppercase tracking-[0.18em] text-primary">iOS beta</p>
-            <h2 className="mt-4 text-4xl font-medium tracking-tight text-foreground">Roost is also on iPhone in beta.</h2>
+            <p className="text-sm font-medium uppercase tracking-[0.18em] text-primary">iOS — Coming May</p>
+            <h2 className="mt-4 text-4xl font-medium tracking-tight text-foreground">Roost is coming to iPhone.</h2>
           </div>
           <div className="rounded-lg bg-background p-6">
             <p className="text-lg leading-relaxed text-muted-foreground">
-              iOS uses the same Roost household as the Mac app: Money, shopping, chores, calendar, pinboard, Hazel, and account settings all work against the same shared data. Public App Store distribution is not presented here yet.
+              iOS uses the same Roost household as the Mac app: Money, shopping, chores, calendar, pinboard, Hazel, and account settings all work against the same shared data. The app is officially in beta and launching on the App Store in May.
             </p>
             <p className="mt-5 text-sm text-muted-foreground">
-              For beta access, use the invite route shared with your household or contact Roost support from the app.
+              Beta access is available now via TestFlight. Use the invite link shared with your household to join.
             </p>
           </div>
         </div>

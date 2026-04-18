@@ -20,7 +20,7 @@ export default function AccountShell({
   children,
 }: {
   title: string;
-  intro: string;
+  intro: React.ReactNode;
   children: (data: AccountData, reload: () => Promise<void>) => React.ReactNode;
 }) {
   const pathname = usePathname();

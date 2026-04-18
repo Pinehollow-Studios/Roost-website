@@ -18,7 +18,7 @@ const item = {
 };
 
 const steps = [
-  { number: "01", text: "Download and open Roost on Mac or iOS beta" },
+  { number: "01", text: "Download and open Roost on Mac or iOS" },
   { number: "02", text: "Choose \"Join existing home\" when prompted" },
   { number: "03", text: "Enter your invite code — you're in" },
 ];
@@ -193,7 +193,7 @@ export default function InvitePage({ code }: { code: string }) {
           variants={item}
           className="text-center text-xs text-muted-foreground mt-10"
         >
-          Mac available now · iOS beta for Roost households
+          Mac available now · iOS launching on the App Store in May
         </motion.p>
       </motion.div>
     </div>

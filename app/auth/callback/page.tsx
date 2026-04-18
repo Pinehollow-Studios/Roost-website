@@ -15,7 +15,11 @@ function AuthCallbackContent() {
     let cancelled = false;
 
     async function finishAuth() {
-      const next = searchParams.get("next") || "/account";
+      const rawNext = searchParams.get("next");
+      const next =
+        rawNext && rawNext.startsWith("/") && !rawNext.startsWith("//")
+          ? rawNext
+          : "/account";
       const code = searchParams.get("code");
 
       if (code) {

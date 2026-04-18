@@ -6,6 +6,7 @@ import type { ProductSection } from "@/lib/product";
 import { productSections } from "@/lib/product";
 import MarketingShell from "@/components/marketing/MarketingShell";
 import ProductVisual from "@/components/marketing/ProductVisual";
+import { ProInline } from "@/components/marketing/ProBrand";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -42,7 +43,7 @@ export default function FeaturePage({ section }: { section: ProductSection }) {
                 href="/pricing"
                 className="inline-flex items-center justify-center rounded-lg border border-border bg-background px-6 py-3 text-base font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
-                See Roost Pro
+                See <ProInline />
               </Link>
             </div>
           </motion.div>

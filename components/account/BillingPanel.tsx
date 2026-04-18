@@ -6,6 +6,7 @@ import { createCheckoutSession, createPortalSession, fallbackPrices, fetchStripe
 import { isProHome, subscriptionLabel, type AccountData } from "@/lib/account";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser";
 import SetupRequired from "@/components/account/SetupRequired";
+import { ProBadge, ProInline, proGradient } from "@/components/marketing/ProBrand";
 
 function formatDate(value: string | null | undefined) {
   if (!value) return null;
@@ -66,9 +67,19 @@ export default function BillingPanel({ data, reload }: { data: AccountData; relo
         <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <div>
             <p className="text-sm font-medium uppercase tracking-[0.16em] text-primary">Current plan</p>
-            <h2 className="mt-3 text-3xl font-medium text-foreground">{subscriptionLabel(home)}</h2>
+            <h2 className="mt-3 text-3xl font-medium text-foreground">
+              {subscriptionLabel(home).startsWith("Roost Pro") ? (
+                <>
+                  <ProInline />
+                  {subscriptionLabel(home).replace("Roost Pro", "")}
+                </>
+              ) : (
+                subscriptionLabel(home)
+              )}
+            </h2>
             <p className="mt-3 max-w-xl text-muted-foreground">
-              One Roost Pro subscription covers everyone in this household. Payments and invoices are managed securely in Stripe.
+              One <ProInline className="font-medium" /> subscription covers everyone in this household.
+              Payments and invoices are managed securely in Stripe.
             </p>
             {nextBilling ? (
               <p className="mt-4 text-sm text-muted-foreground">Next billing date: {nextBilling}</p>
@@ -86,7 +97,10 @@ export default function BillingPanel({ data, reload }: { data: AccountData; relo
 
       {!active && !home.stripe_customer_id ? (
         <section className="rounded-lg border border-border bg-card p-6">
-          <p className="text-sm font-medium uppercase tracking-[0.16em] text-primary">Choose billing</p>
+          <div className="flex items-center gap-3">
+            <p className="text-sm font-medium uppercase tracking-[0.16em] text-primary">Choose billing</p>
+            <ProBadge />
+          </div>
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
             {(["annual", "monthly"] as BillingPlan[]).map((plan) => {
               const price = prices[plan];
@@ -114,16 +128,27 @@ export default function BillingPanel({ data, reload }: { data: AccountData; relo
         <p className="mt-2 text-muted-foreground">
           {active || home.stripe_customer_id
             ? "Open Stripe to update payment details, switch plan, view invoices, or cancel."
-            : "Start Roost Pro checkout for this household."}
+            : <>Start <ProInline className="font-medium" /> checkout for this household.</>}
         </p>
         {error ? <p className="mt-4 rounded-lg bg-destructive/10 px-4 py-3 text-sm text-destructive">{error}</p> : null}
         <button
           type="button"
           onClick={openBilling}
           disabled={loading}
-          className="mt-6 rounded-lg bg-primary px-5 py-3 font-medium text-primary-foreground disabled:opacity-60"
+          className="pro-shimmer relative mt-6 overflow-hidden rounded-lg px-5 py-3 font-bold text-[#8B3A1E] disabled:opacity-60"
+          style={{ backgroundImage: proGradient }}
         >
-          {loading ? "Opening Stripe..." : active || home.stripe_customer_id ? "Manage subscription" : "Start Roost Pro"}
+          <span className="relative z-10">
+            {loading ? (
+              "Opening Stripe..."
+            ) : active || home.stripe_customer_id ? (
+              "Manage subscription"
+            ) : (
+              <>
+                Start Roost Pro
+              </>
+            )}
+          </span>
         </button>
       </section>
     </div>

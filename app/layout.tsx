@@ -5,7 +5,7 @@ import "./globals.css";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "700"],
   variable: "--font-dm-sans",
   display: "swap",
 });
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: "Roost — Budget and run your home together.",
   description:
-    "Roost helps couples manage household money, shopping, chores, calendars, notes, and shared decisions across Mac and iOS beta.",
+    "Roost helps couples manage household money, shopping, chores, calendars, notes, and shared decisions across Mac and iOS.",
   icons: {
     icon: [
       { url: "/logo.png", type: "image/png", sizes: "512x512" },
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Roost — Budget and run your home together.",
     description:
-      "Roost helps couples manage household money, shopping, chores, calendars, notes, and shared decisions across Mac and iOS beta.",
+      "Roost helps couples manage household money, shopping, chores, calendars, notes, and shared decisions across Mac and iOS.",
     type: "website",
     siteName: "Roost",
     images: [
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Roost — Budget and run your home together.",
     description:
-      "Roost helps couples manage household money, shopping, chores, calendars, notes, and shared decisions across Mac and iOS beta.",
+      "Roost helps couples manage household money, shopping, chores, calendars, notes, and shared decisions across Mac and iOS.",
     images: ["/og-image.png"],
   },
 };
@@ -55,7 +55,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={dmSans.variable}>
+    <html lang="en" className={dmSans.variable} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                try {
+                  var stored = window.localStorage.getItem("roost-theme");
+                  var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                  var theme = stored === "light" || stored === "dark" ? stored : (prefersDark ? "dark" : "light");
+                  document.documentElement.classList.toggle("dark", theme === "dark");
+                  document.documentElement.style.colorScheme = theme;
+                } catch (_) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className="antialiased">
         <SmoothScroll>{children}</SmoothScroll>
       </body>

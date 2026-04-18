@@ -124,7 +124,7 @@ export default function PrivacyPage() {
                     <div className="space-y-2 text-base text-muted-foreground">
                         <p>
                             <strong className="text-foreground">Roost</strong> is developed and
-                            operated by <strong className="text-foreground">Ember Studio</strong>.
+                            operated by <strong className="text-foreground">Pinehollow Studios</strong>.
                         </p>
                         <p>
                             This policy applies to the <strong className="text-foreground">Roost website</strong>,
@@ -138,9 +138,9 @@ export default function PrivacyPage() {
                             <strong className="text-foreground">Contact:</strong>{" "}
                             <a
                                 className="text-primary underline decoration-primary/30 underline-offset-4"
-                                href="mailto:thomasslatergg@gmail.com"
+                                href="mailto:support@pinehollow.studio"
                             >
-                                thomasslatergg@gmail.com
+                                support@pinehollow.studio
                             </a>
                         </p>
                     </div>
@@ -149,8 +149,8 @@ export default function PrivacyPage() {
                 <div className="space-y-10">
                     <Section title="Who we are">
                         <p>
-                            Roost is a shared household app for couples, built by Ember Studio. For
-                            the purposes of UK and EU data protection law, Ember Studio is the
+                            Roost is a shared household app for couples, built by Pinehollow Studios. For
+                            the purposes of UK and EU data protection law, Pinehollow Studios is the
                             <strong className="text-foreground"> data controller</strong> — meaning we decide
                             what personal data is collected and why.
                         </p>
@@ -159,9 +159,9 @@ export default function PrivacyPage() {
                             email us at{" "}
                             <a
                                 className="text-primary underline decoration-primary/30 underline-offset-4"
-                                href="mailto:thomasslatergg@gmail.com"
+                                href="mailto:support@pinehollow.studio"
                             >
-                                thomasslatergg@gmail.com
+                                support@pinehollow.studio
                             </a>
                             .
                         </p>
@@ -351,9 +351,9 @@ export default function PrivacyPage() {
                             (Settings → Account). For anything else, email us at{" "}
                             <a
                                 className="text-primary underline decoration-primary/30 underline-offset-4"
-                                href="mailto:thomasslatergg@gmail.com"
+                                href="mailto:support@pinehollow.studio"
                             >
-                                thomasslatergg@gmail.com
+                                support@pinehollow.studio
                             </a>
                             , and we will respond within 30 days.
                         </p>
@@ -411,13 +411,13 @@ export default function PrivacyPage() {
 
                     <Section title="Contact">
                         <p className="text-foreground">
-                            <strong>Ember Studio</strong>
+                            <strong>Pinehollow Studios</strong>
                             <br />
                             <a
                                 className="text-primary underline decoration-primary/30 underline-offset-4"
-                                href="mailto:thomasslatergg@gmail.com"
+                                href="mailto:support@pinehollow.studio"
                             >
-                                thomasslatergg@gmail.com
+                                support@pinehollow.studio
                             </a>
                         </p>
                     </Section>

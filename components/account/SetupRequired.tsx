@@ -12,8 +12,8 @@ export default function SetupRequired() {
         <Link href="/download" className="rounded-lg bg-primary px-5 py-3 text-center font-medium text-primary-foreground">
           Download for Mac
         </Link>
-        <Link href="/download#ios-beta" className="rounded-lg border border-border px-5 py-3 text-center font-medium text-foreground">
-          iOS beta details
+        <Link href="/download#ios" className="rounded-lg border border-border px-5 py-3 text-center font-medium text-foreground">
+          iOS — Coming May
         </Link>
       </div>
     </div>

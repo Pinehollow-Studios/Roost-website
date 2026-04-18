@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ProInline } from "@/components/marketing/ProBrand";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -25,11 +26,11 @@ export default function PricingTeaser() {
               id="pricing-teaser-heading"
               className="text-3xl sm:text-4xl font-medium text-foreground tracking-tight"
             >
-              Free to start. Pro when you&apos;re ready.
+              Free to start. <ProInline className="font-bold" /> when you&apos;re ready.
             </h2>
 
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed text-balance">
-              Roost is free. Roost Pro unlocks the full experience — expense
+              Roost is free. <ProInline className="font-medium" /> unlocks the full experience — expense
               history, budget insights, Hazel, and more.
             </p>
 
