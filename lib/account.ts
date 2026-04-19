@@ -63,7 +63,7 @@ export async function fetchAccountData(supabase: SupabaseClient): Promise<Accoun
   const homeId = (membership as { home_id?: string } | null)?.home_id;
   if (!homeId) return { user, home: null, members: [] };
 
-  const [{ data: home }, { data: members }] = await Promise.all([
+  const [{ data: home }, membersRes] = await Promise.all([
     supabase
       .from("homes")
       .select(
@@ -71,16 +71,12 @@ export async function fetchAccountData(supabase: SupabaseClient): Promise<Accoun
       )
       .eq("id", homeId)
       .maybeSingle(),
-    supabase
-      .from("home_members")
-      .select("id,user_id,display_name,role,created_at")
-      .eq("home_id", homeId)
-      .order("created_at", { ascending: true }),
+    fetch("/api/account/members").then((r) => r.json()).catch(() => ({ members: [] })),
   ]);
 
   return {
     user,
     home: (home as AccountHome | null) ?? null,
-    members: (members as AccountMember[] | null) ?? [],
+    members: (membersRes.members as AccountMember[] | null) ?? [],
   };
 }
