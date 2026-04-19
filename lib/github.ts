@@ -2,7 +2,7 @@ import { remark } from "remark";
 import html from "remark-html";
 
 const GITHUB_API_BASE = "https://api.github.com/repos/Pinehollow-Studios/Roost-mac/releases";
-const RELEASE_REVALIDATE_SECONDS = 3600;
+const RELEASE_REVALIDATE_SECONDS = 300;
 const FALLBACK_DMG_URL =
   "/download";
 

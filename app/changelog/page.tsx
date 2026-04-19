@@ -3,6 +3,8 @@ import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
 import { getPublicReleases } from "@/lib/github";
 
+export const revalidate = 300; // refresh every 5 minutes
+
 export const metadata: Metadata = {
   title: "Changelog — Roost",
   description: "Every update to Roost, as it happens.",
