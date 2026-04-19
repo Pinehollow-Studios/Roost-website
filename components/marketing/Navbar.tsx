@@ -54,6 +54,7 @@ export default function Navbar() {
     { href: "/money", label: "Money" },
     { href: "/roost-pro", label: <ProInline /> },
     { href: "/pricing", label: "Pricing" },
+    { href: "/changelog", label: "Changelog" },
     { href: "/download", label: "Download" },
   ];
 
@@ -277,6 +278,15 @@ export default function Navbar() {
                 }`}
               >
                 Pricing
+              </Link>
+              <Link
+                href="/changelog"
+                onClick={() => setMobileOpen(false)}
+                className={`rounded-lg border px-4 py-3 text-center font-medium ${
+                  isProPage ? "border-[var(--pro-border)]" : "border-border"
+                }`}
+              >
+                Changelog
               </Link>
               <Link
                 href="/account"
