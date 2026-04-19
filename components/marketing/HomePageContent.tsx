@@ -38,7 +38,7 @@ export default function HomePageContent() {
     <MarketingShell>
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
       <section className="relative min-h-[calc(100svh-4rem)] overflow-hidden px-6 pt-32 pb-16 sm:pt-36">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(212,121,94,0.22),transparent_32%),linear-gradient(180deg,rgba(255,255,255,0.76),rgba(232,237,229,0.42))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(212,121,94,0.22),transparent_32%),linear-gradient(180deg,rgba(255,255,255,0.76),rgba(232,237,229,0.42))] dark:bg-[radial-gradient(circle_at_75%_20%,rgba(212,121,94,0.13),transparent_36%)]" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <motion.div
             initial={{ opacity: 0, y: 44 }}

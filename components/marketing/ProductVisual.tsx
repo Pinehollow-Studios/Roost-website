@@ -100,7 +100,7 @@ function ListVisual({ type }: { type: ProductSection["visual"] }) {
 export default function ProductVisual({ section }: { section: ProductSection }) {
   return (
     <motion.div
-      className="relative overflow-hidden rounded-lg border border-border bg-card p-5 shadow-[0_18px_60px_rgba(32,36,31,0.10)]"
+      className="relative overflow-hidden rounded-lg border border-border bg-card p-5 shadow-[0_18px_60px_rgba(32,36,31,0.10)] dark:shadow-[0_18px_60px_rgba(0,0,0,0.5)]"
       initial={{ opacity: 0, y: 36, scale: 0.98 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, amount: 0.25 }}

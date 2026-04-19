@@ -130,7 +130,7 @@ export default function Features() {
               variants={rise}
               whileHover={{ y: -10, scale: 1.01 }}
               transition={{ type: "spring", stiffness: 220, damping: 20 }}
-              className="relative flex h-full flex-col gap-5 rounded-xl border border-border bg-card p-6 shadow-[0_2px_8px_rgba(61,50,41,0.06)] sm:p-7"
+              className="relative flex h-full flex-col gap-5 rounded-xl border border-border bg-card p-6 shadow-[0_2px_8px_rgba(61,50,41,0.06)] dark:shadow-[0_2px_12px_rgba(0,0,0,0.35)] sm:p-7"
               style={{ borderTop: "2px solid rgba(212,121,94,0.35)" }}
             >
               <div className="flex items-center gap-3">

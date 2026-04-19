@@ -8,7 +8,7 @@ export default function Philosophy() {
   return (
     <section id="philosophy" className="px-6 py-28 sm:py-32" aria-label="Our philosophy">
       <motion.div
-        className="mx-auto max-w-5xl rounded-[2rem] border border-border bg-accent px-8 py-12 text-center shadow-[0_2px_8px_rgba(61,50,41,0.06)] sm:px-12 sm:py-16"
+        className="mx-auto max-w-5xl rounded-[2rem] border border-border bg-accent px-8 py-12 text-center shadow-[0_2px_8px_rgba(61,50,41,0.06)] dark:shadow-[0_2px_12px_rgba(0,0,0,0.35)] sm:px-12 sm:py-16"
         style={{ borderTop: "2px solid rgba(212,121,94,0.35)" }}
         initial={{ opacity: 0, y: 40, scale: 0.98 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}

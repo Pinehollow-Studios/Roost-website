@@ -11,7 +11,7 @@ export default function PricingTeaser() {
     <section className="py-24 px-6 sm:py-28" aria-labelledby="pricing-teaser-heading">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          className="rounded-2xl border border-border bg-card px-6 py-12 text-center shadow-[0_2px_8px_rgba(61,50,41,0.06)] sm:px-10"
+          className="rounded-2xl border border-border bg-card px-6 py-12 text-center shadow-[0_2px_8px_rgba(61,50,41,0.06)] dark:shadow-[0_2px_12px_rgba(0,0,0,0.35)] sm:px-10"
           style={{ borderTop: "2px solid rgba(212,121,94,0.35)" }}
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
