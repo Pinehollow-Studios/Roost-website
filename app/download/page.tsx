@@ -20,7 +20,7 @@ interface GitHubRelease {
 }
 
 const FALLBACK_DMG_URL =
-  "https://github.com/tomslater1/Roost/releases/latest/download/Roost.dmg";
+  "https://github.com/Pinehollow-Studios/Roost-mac/releases/latest/download/Roost.dmg";
 
 function formatPublishedDate(dateString: string) {
   const date = new Date(dateString);
@@ -39,7 +39,7 @@ function formatPublishedDate(dateString: string) {
 async function getLatestRelease() {
   try {
     const response = await fetch(
-      "https://api.github.com/repos/tomslater1/Roost/releases/latest",
+      "https://api.github.com/repos/Pinehollow-Studios/Roost-mac/releases/latest",
       {
         headers: {
           Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
