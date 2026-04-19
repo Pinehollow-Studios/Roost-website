@@ -1,14 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { FormEvent, useMemo, useState } from "react";
 import MarketingShell from "@/components/marketing/MarketingShell";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser";
 import { APPLE_LOGO_PATH } from "@/lib/constants";
 
 export default function AuthForm({ mode }: { mode: "login" | "signup" }) {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const rawNext = searchParams.get("next");
   const next =
@@ -42,7 +41,7 @@ export default function AuthForm({ mode }: { mode: "login" | "signup" }) {
       } else {
         const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
         if (signInError) throw signInError;
-        router.push(next);
+        window.location.href = next;
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");
