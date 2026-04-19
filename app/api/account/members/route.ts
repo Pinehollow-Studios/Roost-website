@@ -42,9 +42,9 @@ export async function GET(request: NextRequest) {
 
   const { data: members } = await admin
     .from("home_members")
-    .select("id,user_id,display_name,role,created_at")
+    .select("id,user_id,display_name,role,joined_at")
     .eq("home_id", membership.home_id)
-    .order("created_at", { ascending: true });
+    .order("joined_at", { ascending: true });
 
   return NextResponse.json({ members: members ?? [] });
 }

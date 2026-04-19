@@ -18,7 +18,7 @@ export type AccountMember = {
   user_id: string | null;
   display_name: string | null;
   role: string | null;
-  created_at: string | null;
+  joined_at: string | null;
 };
 
 export type AccountData = {
